@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暂停实现</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <script type="module">
+        const btn = document.querySelector('button');
+
+        // 睡眠时间
+        function sleep(millisecond) {
+            const start = Date.now();
+
+            while (Date.now() - start < millisecond) {
+
+            }
+        }
+
+        btn.addEventListener('click', () => {
+            console.log('睡眠开始');
+            const start = Date.now();
+
+            sleep(3000);
+            console.log(`睡眠结束,用时：${Date.now() - start}`);
+        });
+
+    </script>
+</head>
+
+<body>
+    <button>睡眠按钮-查看控制台</button>
+</body>
+
+</html>

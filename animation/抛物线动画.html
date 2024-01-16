@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抛物线动画</title>
+    <style>
+        .ball-outer {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            transition: all 1s linear;
+        }
+
+        .ball {
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: aqua;
+            display: block;
+            transition: all 1s cubic-bezier(0.5, -0.5, 1, 1);
+        }
+
+        .line {
+            position: absolute;
+            top: 121px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: blue;
+        }
+
+        .ball-outer.sport {
+            transform: translateX(300px);
+        }
+
+        .ball.sport {
+            transform: translateY(300px);
+        }
+    </style>
+    <script type="module">
+        const button = document.querySelector('button');
+        const ballOuter = document.querySelector('.ball-outer');
+        const ball = document.querySelector('.ball');
+
+        function addSport() {
+            ballOuter.style.display = 'block';
+            ballOuter.classList.add('sport');
+            ball.classList.add('sport');
+        }
+
+        function removeSport() {
+            ballOuter.classList.remove('sport');
+            ball.classList.remove('sport');
+        }
+
+        button.addEventListener('click', addSport);
+        ball.addEventListener('transitionend', removeSport)
+    </script>
+</head>
+
+<body>
+    <button>开始</button>
+    <div class="line"></div>
+    <div class="ball-outer">
+        <span class="ball" />
+    </div>
+</body>
+
+</html>
