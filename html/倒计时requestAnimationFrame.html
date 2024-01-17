@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        #timer {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="timer">10</div>
+    <button>retry</button>
+
+    <script>
+        function countdown(timerElement, seconds) {
+            let startTime;
+            const targetTime = seconds * 1000;
+
+            function updateTimer(timestamp) {
+                if (!startTime) {
+                    startTime = timestamp;
+                }
+                const elapsedTime = timestamp - startTime;
+                const remainingTime = Math.max(targetTime - elapsedTime, 0);
+                const secondsRemaining = Math.ceil(remainingTime / 1000);
+
+                timerElement.textContent = secondsRemaining;
+
+                if (remainingTime > 0) {
+                    requestAnimationFrame(updateTimer);
+                }
+            }
+
+            requestAnimationFrame(updateTimer);
+        }
+
+        const timerElement = document.getElementById('timer');
+        countdown(timerElement, 10); // 10秒倒计时
+
+        const btn = document.querySelector('button');
+
+        btn.addEventListener('click', () => {
+            countdown(timerElement, 100);
+        })
+    </script>
+
+</body>
+
+</html>
